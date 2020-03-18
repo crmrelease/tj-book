@@ -1,12 +1,13 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const user =require('../models/user');
+const jwt = require('jsonwebtoken');
 
 module.exports = (passport)=>{
     passport.use(new LocalStrategy({
         usernameField: 'email',
         passwordField:'password',
-    }, async(email,password,done)=>{ 
+    }, async(email,password,done,next)=>{ 
         try{
             const exUser = await user.findOne({email:email});
             if(exUser){

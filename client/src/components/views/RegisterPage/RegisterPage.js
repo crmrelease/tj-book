@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import {useDispatch} from 'react-redux';
 import {joinUser} from '../../../_actions/user_action';
 
+
 function RegisterPage(props) {
     
     const dispatch = useDispatch()

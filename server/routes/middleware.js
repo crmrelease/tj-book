@@ -19,39 +19,21 @@ exports.isNotLoggedIn = (req,res,next)=>{
 
 exports.verifyToken = (req, res, next) => {
     try {
-      req.decoded = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
+      req.decoded = jwt.verify(req.cookies.clientToken, process.env.JWT_SECRET);
       return next();
     } catch (error) {
       if (error.name === 'TokenExpiredError') { 
-        return res.status(419).json({
+        return res.json({
           code: 419,
-          message: '토큰이 만료되었습니다',
-        });
+          message: '토큰이 만료되었다구~',
+          isAuth:false
+        })
+        .clearCookie('clientToken')
       }
-      return res.status(401).json({
+      return res.json({
         code: 401,
         message: '유효하지 않은 토큰입니다',
+        isAuth:false
       });
     }
   };
-
-  exports.apiLimiter = new RateLimit({
-      windowMs: 6000*1000, 
-      max:100,
-      delayMs:0,
-      handler(req,res){
-          res.status(this.statusCode).json({
-              code:this.statusCode,
-              message:'1분에 한번만 요청해라'
-          });
-      },
-  });
-
-  exports.deprecated = (req,res)=>{
-      res.status(410).json({
-          code:410,
-          message:'새로운 버전을 써라'
-      }
-
-      )
-  }

@@ -3,8 +3,9 @@ const router = express.Router()
 const user =require('../models/user')
 const passport = require('passport');
 const bcrypt = require('bcrypt');
-const {isLoggedIn, isNotLoggedIn}= require('./middleware')
+const {isLoggedIn, isNotLoggedIn,verifyToken}= require('./middleware')
 const cors =require('cors')
+const uuidv4 = require('uuid/v4')
 
 router.use(cors())
 
@@ -19,13 +20,14 @@ try{
 
     const hash = await bcrypt.hash(password,12);
 
-    await user.create(
+    const newUser = await user.create(
         {
             name,
             email,
             password:hash,
         }
     );
+    await newUser.update({$set:{clientSecret: uuidv4()}})
     res.json({success: true, message:"환영한다 친구야"})
 }
 catch(error){
@@ -34,8 +36,8 @@ catch(error){
 }
 }),
 
-router.post('/login',(req,res,next)=>{
-    
+
+router.post('/login',async (req,res,next)=>{
     passport.authenticate('local',(authError, user, info)=>{
         if(authError){
             console.error(authError);
@@ -60,8 +62,11 @@ router.post('/login',(req,res,next)=>{
 
 router.get('/logout', (req,res)=>{
     req.logout();
-    //req.session.destroy();
-    //res.redirect('/');
+    res.clearCookie('clientToken')
+        .json({
+            logoutSucess:true, message:"로그아웃성공"
+        })
 })
+
 
 module.exports = router;
