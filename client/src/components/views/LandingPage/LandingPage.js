@@ -9,10 +9,7 @@ function LandingPage(props) {
     const[bookState,setbookState]= useState([])
     const[mainBook,setmainBook] = useState(null)
 
-    useEffect(()=>{
-        const body={
-            query:'미시마유키오'
-        }
+    const loadItem=(body)=>{
         axios.post('/bookInfo',body)
         .then(response=>{
             if(response.data.success){
@@ -24,14 +21,44 @@ function LandingPage(props) {
                 })
                 setbookState(bookList)
                 setmainBook(bookList[5])
+                
             }
             else{
                 console.log(response.data)
-
                 alert('정보조회실패')
             }
         })
+    }
+
+    useEffect(()=>{
+        const body={
+            query:'어린왕자'
+        }
+        loadItem(body)
     },[])
+
+    const moreItem =() =>{
+        const body={
+            query:'오렌지나무'
+        }
+        axios.post('/bookInfo',body)
+        .then(response=>{
+            if(response.data.success){
+                const obj = JSON.parse(response.data.body)
+                const item = obj.item
+                const bookList =[]
+                item.map(key=>{
+                    bookList.push(key)
+                })
+                setbookState([...bookState,...bookList])
+            }
+            else{
+                console.log(response.data)
+                alert('정보조회실패')
+            }
+        })
+
+    }
 
     const onClickHandler =()=>{
         axios.get('auth/logout').then(response=>{
@@ -73,7 +100,7 @@ function LandingPage(props) {
             
             <div style={{display:'flex', justifyContent:'center'}}>
 
-                <button> 더 보기</button>
+                <button onClick={moreItem}> 더 보기</button>
             </div>
             <button onClick={onClickHandler}>로그아웃</button>
         </div>
