@@ -8,7 +8,6 @@ const rateSchema = mongoose.Schema({
     },
     bookId:{
         type:Number,
-        unique:true
     },
     grade:{
         type:Number

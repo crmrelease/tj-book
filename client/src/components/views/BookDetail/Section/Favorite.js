@@ -40,6 +40,7 @@ const addRate=(value)=>{
         Axios.post('/rate/addrate',body)
         .then(response=>{
             if(response.data.success){
+                console.log(response.data)
             }else{
                 alert('평점 저장 실패')
             }
