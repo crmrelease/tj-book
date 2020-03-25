@@ -11,6 +11,8 @@ const cors =require('cors')
 const indexRouter = require('./routes/index')
 const authRouter = require('./routes/auth');
 const tokenRouter = require('./routes/token');
+const bookRouter = require('./routes/book');
+
 
 const passportConfig = require('./passport');
 
@@ -51,6 +53,8 @@ app.use(bodyParser.json())
 app.use('/', indexRouter);
 app.use('/auth',authRouter);
 app.use('/token',tokenRouter);
+app.use('/book',bookRouter);
+
 
 
 

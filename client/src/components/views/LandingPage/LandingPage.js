@@ -9,8 +9,8 @@ function LandingPage(props) {
     const[bookState,setbookState]= useState([])
     const[mainBook,setmainBook] = useState(null)
 
-    const loadItem=(body)=>{
-        axios.post('/bookInfo',body)
+    const loadItemFun=(body)=>{
+        axios.post('/book/bookInfo',body)
         .then(response=>{
             if(response.data.success){
                 const obj = JSON.parse(response.data.body)
@@ -21,7 +21,6 @@ function LandingPage(props) {
                 })
                 setbookState(bookList)
                 setmainBook(bookList[5])
-                
             }
             else{
                 console.log(response.data)
@@ -30,18 +29,8 @@ function LandingPage(props) {
         })
     }
 
-    useEffect(()=>{
-        const body={
-            query:'어린왕자'
-        }
-        loadItem(body)
-    },[])
-
-    const moreItem =() =>{
-        const body={
-            query:'오렌지나무'
-        }
-        axios.post('/bookInfo',body)
+    const moreItemFun =(body)=>{
+        axios.post('/book/bookInfo',body)
         .then(response=>{
             if(response.data.success){
                 const obj = JSON.parse(response.data.body)
@@ -57,7 +46,21 @@ function LandingPage(props) {
                 alert('정보조회실패')
             }
         })
+    }
 
+
+    useEffect(()=>{
+        const body={
+            query:'어린왕자'
+        }
+        loadItemFun(body)
+    },[])
+
+    const moreItem =() =>{
+        const body={
+            query:'오렌지나무'
+        }
+      moreItemFun(body)
     }
 
     const onClickHandler =()=>{
@@ -90,7 +93,7 @@ function LandingPage(props) {
                         <GridCard 
                         image={movie_key.coverLargeUrl}
                         title={movie_key.title}
-                        //movieId={movie_key.item.itemId}
+                        bookId={movie_key.itemId}
                         />
                     </React.Fragment>
             ))}

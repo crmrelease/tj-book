@@ -12,6 +12,7 @@ import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import TokenPage from './components/views/TokenPage/TokenPage';
 import NavBar from "./components/views/NavBar/NavBar";
+import BookDetail from "./components/views/BookDetail/BookDetail";
 import Auth from './hoc/auth';
 
 
@@ -25,7 +26,9 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage,null)}/>
           <Route exact path="/login" component={Auth(LoginPage,false)}/>
           <Route exact path="/join" component={Auth(RegisterPage,false)}/>
+          <Route exact path="/book/:bookId" component={Auth(BookDetail,false)}/>
           <Route exact path="/token" component={Auth(TokenPage,false)}/>
+          
   </Switch>
   </BrowserRouter>
 </div>
