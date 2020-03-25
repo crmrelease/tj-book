@@ -13,6 +13,9 @@ import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import TokenPage from './components/views/TokenPage/TokenPage';
 import NavBar from "./components/views/NavBar/NavBar";
 import BookDetail from "./components/views/BookDetail/BookDetail";
+import ToBook from "./components/views/ToPage/ToPage";
+import DidBook from "./components/views/FavoritePage/FavoritePage";
+import MyComment from "./components/views/MyComment/MyComment";
 import Auth from './hoc/auth';
 
 
@@ -28,6 +31,10 @@ function App() {
           <Route exact path="/join" component={Auth(RegisterPage,false)}/>
           <Route exact path="/book/:bookId" component={Auth(BookDetail,true)}/>
           <Route exact path="/token" component={Auth(TokenPage,false)}/>
+          <Route exact path="/tobook" component={Auth(ToBook,true)}/>
+          <Route exact path="/didbook" component={Auth(DidBook,true)}/>
+          <Route exact path="/mycomment" component={Auth(MyComment,true)}/>
+
           
   </Switch>
   </BrowserRouter>

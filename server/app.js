@@ -13,6 +13,8 @@ const authRouter = require('./routes/auth');
 const tokenRouter = require('./routes/token');
 const bookRouter = require('./routes/book');
 const commentRouter = require('./routes/comment');
+const favoriteRouter = require('./routes/favorite');
+const rateRouter = require('./routes/rate');
 
 
 
@@ -57,6 +59,10 @@ app.use('/auth',authRouter);
 app.use('/token',tokenRouter);
 app.use('/book',bookRouter);
 app.use('/comment',commentRouter);
+app.use('/favorite',favoriteRouter);
+app.use('/rate',rateRouter);
+
+
 
 
 

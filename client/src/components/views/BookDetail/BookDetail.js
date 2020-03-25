@@ -3,6 +3,7 @@ import axios from 'axios'
 import MainImage from '../LandingPage/Section/MainImage'
 import BookDetailInfo from './Section/BookDetailInfo'
 import Comment from './Section/Comment'
+import Favorite from './Section/Favorite'
 
 function BookDetail(props) {
 
@@ -10,17 +11,19 @@ function BookDetail(props) {
     const[bookState,setbookState]= useState([])
     const [commentAll,setcommentAll]=useState([])
 
+    const refreshFunction =(newComment)=>{
+        setcommentAll(commentAll.concat(newComment))
+    }
+
     useEffect(() => {
         const body={bookId:bookId}
         axios.post('/book/bookInfoDetail',body)
         .then(response=>{
             if(response.data.success){
                 const obj = JSON.parse(response.data.body)
-                console.log(obj.item)
                 setbookState(obj.item[0])
             }
             else{
-                console.log(response.data)
                 alert('정보조회실패')
             }
         })
@@ -43,6 +46,11 @@ function BookDetail(props) {
              title={bookState.title}
              description={bookState.description} />
         <div style={{width:'85%', margin:'1rem auto'}}>
+
+        <div style={{display:'flex', justifyContent:'flex-end'}}>
+        <Favorite bookId={bookId}/>
+        </div>
+
         <BookDetailInfo 
         title={bookState.title}
         pubDate={bookState.pubDate}
@@ -55,6 +63,7 @@ function BookDetail(props) {
         />
         <div style={{margin:'2rem auto'}}>
         <Comment
+        refreshFunction={refreshFunction}
         bookId={props.match.params.bookId}
         comment={commentAll}
         />

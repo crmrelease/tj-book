@@ -21,7 +21,8 @@ function Comment(props) {
         Axios.post('/comment/addComment',body)
         .then(response=>{
             if(response.data.success){
-                console.log(response.data)
+                setcontentValue("")
+                props.refreshFunction(response.data.result)
             }
             else{
                 alert('코멘트 전달 실패')
@@ -46,7 +47,8 @@ function Comment(props) {
             <p>댓글</p>
             <hr/>
             {props.comment&&props.comment.map((key)=>(
-                <CommentList comment={key}/>
+                <CommentList 
+                comment={key}/>
             ))}
 
         </div>

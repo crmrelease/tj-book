@@ -5,7 +5,6 @@ import {Comment, Button, Input} from 'antd';
 function CommentList(props) {
     return (
         <div>
-            {console.log(props.comment)}
             <Comment
         author={props.comment.writer.name}
         content= {<p>{props.comment.content}</p>}

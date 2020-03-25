@@ -6,10 +6,13 @@ function LeftMenu(props) {
   return (
     <Menu mode={props.mode}>
     <Menu.Item key="mail">
-      <a href="/">메뉴1(홈)</a>
+      <a href="/">도서 검색</a>
     </Menu.Item>
-    <Menu.Item key="subscription">
-      <a href="/subscription">메뉴2</a>
+    <Menu.Item>
+      <a href="/didbook">내가 읽은 책</a>
+    </Menu.Item>
+    <Menu.Item >
+      <a href="/tobook">내가 읽고 싶은 책</a>
     </Menu.Item>
   </Menu>
   )

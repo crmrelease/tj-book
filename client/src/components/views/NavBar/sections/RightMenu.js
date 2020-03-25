@@ -32,7 +32,7 @@ function RightMenu(props) {
     return (
       <Menu mode={props.mode} >
         <Menu.Item key="create">
-          <a href="/video/upload">메뉴3(로그인후)</a>
+          <a href="/MyComment">내가 남긴 코멘트</a>
         </Menu.Item>
         <Menu.Item key="logout">
           <a onClick={logoutHandler}>로그아웃</a>
