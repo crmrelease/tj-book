@@ -8,7 +8,8 @@ function RightMenu(props) {
     const logoutHandler = () => {
         axios.get('/auth/logout').then(response => {
           if (response.status === 200) {
-           props.history.push("/login");
+            localStorage.clear()
+            props.history.push("/login");
         } else {
             alert('Log Out Failed')
           }

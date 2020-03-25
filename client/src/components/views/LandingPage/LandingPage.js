@@ -67,6 +67,7 @@ function LandingPage(props) {
         axios.get('auth/logout').then(response=>{
                 console.log(response.data)
                 if(response.data.logoutSucess){
+                    localStorage.clear()
                     props.history.push("/login")
                 }else{
                     alert('로그아웃이 실패')

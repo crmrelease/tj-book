@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage,null)}/>
           <Route exact path="/login" component={Auth(LoginPage,false)}/>
           <Route exact path="/join" component={Auth(RegisterPage,false)}/>
-          <Route exact path="/book/:bookId" component={Auth(BookDetail,false)}/>
+          <Route exact path="/book/:bookId" component={Auth(BookDetail,true)}/>
           <Route exact path="/token" component={Auth(TokenPage,false)}/>
           
   </Switch>

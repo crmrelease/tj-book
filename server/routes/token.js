@@ -49,10 +49,12 @@ router.get('/userInfo',verifyToken,async (req,res)=>{
     })
   }
   return res.json({
-      code: 200,
-      isAuth: true,
-      info: checkedUser.name,
-      isAdmin:checkedUser.role
+    code: 200,
+    _id:checkedUser._id,
+    isAuth: true,
+    info: checkedUser.name,
+    isAdmin:checkedUser.role,
+    email:checkedUser.email,
       })
   }
   catch{((error) => {
