@@ -2,6 +2,8 @@ import React,{useEffect, useState} from 'react'
 import { Rate } from 'antd';
 import ReactDOM from 'react-dom';
 import Axios from 'axios';
+import { Button } from 'antd';
+
 
 function Favorite(props) {
 
@@ -75,7 +77,7 @@ const addRate=(value)=>{
        :<Rate value={rate} onChange={addRate} tooltips={ratelist}/>}
        </div>
        <div style={{margin:'1rem auto'}}>
-       <button type='Primary' style={{float:'right'}} onClick={addFavorite}>{favorite}명이 이 책을 좋아합니다</button>       
+       <Button type='Primary' style={{float:'right'}} onClick={addFavorite}>{favorite}명이 이 책을 좋아합니다</Button>       
            </div>     
        </div>
     )

@@ -17,13 +17,16 @@ import ToBook from "./components/views/ToPage/ToPage";
 import DidBook from "./components/views/FavoritePage/FavoritePage";
 import MyComment from "./components/views/MyComment/MyComment";
 import FindBook from "./components/views/FindBook/FindBook";
+import Profile from "./components/views/Profile/Profile";
 import Auth from './hoc/auth';
 
 
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}> 
+        <BrowserRouter>
       <NavBar />
+      </BrowserRouter>
 <div style={{ paddingTop: '75px', minHeight: 'calc(100vh - 80px)' }}>
   <BrowserRouter>
   <Switch>
@@ -36,6 +39,7 @@ function App() {
           <Route exact path="/didbook" component={Auth(DidBook,true)}/>
           <Route exact path="/mycomment" component={Auth(MyComment,true)}/>
           <Route exact path="/find" component={Auth(FindBook,true)}/>
+          <Route exact path="/profile" component={Auth(Profile,true)}/>
 
 
           

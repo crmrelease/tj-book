@@ -3,11 +3,14 @@ import axios from 'axios'
 import MainImage from './Section/MainImage'
 import GridCard from '../Common/GridCard'
 import {Row} from 'antd'
+import { useSelector } from "react-redux";
+
 
 function LandingPage(props) {
     
     const[bookState,setbookState]= useState([])
     const[mainBook,setmainBook] = useState(null)
+    const user = useSelector(state => state.user)
 
     const loadItemFun=(body)=>{
         axios.post('/book/bookInfo',body)
@@ -86,7 +89,7 @@ function LandingPage(props) {
                 />}
             
             <div style={{width:'85%', margin:'1rem auto'}}>
-            <h2>{localStorage.getItem("name")}님께 추천하는 도서</h2>
+            <h2>이런 책들 어때요?</h2>
             <hr />
 
         <Row gutter={[16,16]}>
@@ -107,7 +110,7 @@ function LandingPage(props) {
 
                 <button onClick={moreItem}> 더 보기</button>
             </div>
-            <button onClick={onClickHandler}>로그아웃</button>
+            <button onClick={onClickHandler}>임시 로그아웃</button>
         </div>
     )
 }

@@ -65,9 +65,6 @@ useEffect(() => {
         </Row>
             </div>
 
-            <div style={{display:'flex', justifyContent:'center'}}>
-            <button onClick> 더 보기</button>
-            </div>
         </div>
     )
 }
