@@ -66,6 +66,7 @@ function BookDetail(props) {
         refreshFunction={refreshFunction}
         bookId={props.match.params.bookId}
         comment={commentAll}
+        title={bookState.title}
         />
 
 

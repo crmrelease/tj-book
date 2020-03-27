@@ -16,6 +16,7 @@ import BookDetail from "./components/views/BookDetail/BookDetail";
 import ToBook from "./components/views/ToPage/ToPage";
 import DidBook from "./components/views/FavoritePage/FavoritePage";
 import MyComment from "./components/views/MyComment/MyComment";
+import FindBook from "./components/views/FindBook/FindBook";
 import Auth from './hoc/auth';
 
 
@@ -34,6 +35,8 @@ function App() {
           <Route exact path="/tobook" component={Auth(ToBook,true)}/>
           <Route exact path="/didbook" component={Auth(DidBook,true)}/>
           <Route exact path="/mycomment" component={Auth(MyComment,true)}/>
+          <Route exact path="/find" component={Auth(FindBook,true)}/>
+
 
           
   </Switch>

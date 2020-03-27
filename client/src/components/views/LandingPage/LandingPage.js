@@ -52,14 +52,14 @@ function LandingPage(props) {
 
     useEffect(()=>{
         const body={
-            query:'어린왕자'
+            query:'베스트셀러'
         }
         loadItemFun(body)
     },[])
 
     const moreItem =() =>{
         const body={
-            query:'오렌지나무'
+            query:'올해의'
         }
       moreItemFun(body)
     }
@@ -86,7 +86,7 @@ function LandingPage(props) {
                 />}
             
             <div style={{width:'85%', margin:'1rem auto'}}>
-            <h2>추천하는 도서</h2>
+            <h2>{localStorage.getItem("name")}님께 추천하는 도서</h2>
             <hr />
 
         <Row gutter={[16,16]}>

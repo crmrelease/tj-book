@@ -27,5 +27,10 @@ router.post('/getAllcomment',(req,res)=>{
         return res.status(200).json({success:true,commentData})
 })})
 
+router.post('/getMycomment',(req,res)=>{
+    comment.find({'writer':req.body.writer}).populate('writer').exec((err,commentData)=>{
+        if(err) return res.json({success:false,err})
+        return res.status(200).json({success:true,commentData})
+})})
 
 module.exports = router;

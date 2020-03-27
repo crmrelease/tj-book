@@ -7,6 +7,7 @@ function GridCard(props) {
                 <div style={{position:'relative'}}>
             <a href={`/book/${props.bookId}`}>
             <img style={{width:'100%', height:'320px'}}src={props.image} />
+            <div><h2 style={{ color: 'black', fontFamily:'Georgia',fontSize: '1rem'}} align='center'> {props.title} </h2></div>
             </a>
                 </div>
         </Col>    

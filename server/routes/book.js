@@ -11,14 +11,13 @@ router.use(cors());
 
 router.post('/bookInfo',(req,res)=>{
     const enc = encodeURI(req.body.query)
-    request(`${process.env.API_URL}key=${process.env.API_KEY}&query=${enc}&maxResults=20`,(error,response,body)=>{
+    request(`${process.env.API_URL}key=${process.env.API_KEY}&query=${enc}&maxResults=20&sort=salesPoint`,(error,response,body)=>{
         if(error) res.json({success:false,error})
         res.json({success:true, body})
     })
 })
 
 router.post('/bookInfoRandom',(req,res)=>{
-    console.log(req.body)
     let enc =[]
     req.body.map((key)=>{
                  enc.push(key)
@@ -43,5 +42,15 @@ router.post('/bookInfoDetail',(req,res)=>{
         res.json({success:true, body})
     })
 })
+
+router.post('/findbookinfo',(req,res)=>{
+    const searchContent = encodeURI(req.body.searchContent)
+    const searchCategory = encodeURI(req.body.searchCategory)
+    request(`${process.env.API_URL}key=${process.env.API_KEY}&queryType=${searchCategory}&query=${searchContent}&maxResults=50`,(error,response,body)=>{
+        if(error) res.json({success:false,error})
+        res.json({success:true, body})
+    })
+})
+
 
 module.exports = router;

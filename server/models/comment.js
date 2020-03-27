@@ -11,6 +11,9 @@ const commentSchema = mongoose.Schema({
     },
     content:{
         type:String
+    },
+    bookTitle:{
+        type:String
     }
 })
 

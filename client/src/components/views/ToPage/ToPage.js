@@ -49,15 +49,8 @@ useEffect(() => {
 
         return (
         <div style={{width:'100%', margin: '0'}}>
-            
-            {mainBook!==null&&<MainImage 
-                    image={mainBook.coverLargeUrl}
-                    title={mainBook.title}
-                    description={mainBook.description} 
-                />}
-
                 <div style={{width:'85%', margin:'1rem auto'}}>
-            <h2>내가 좋아요 누른 책</h2>
+            <h2>내가 좋아하는 도서</h2>
             <hr />
             <Row gutter={[16,16]}>
             {bookInfo&& bookInfo.map((movie_key,index)=>(

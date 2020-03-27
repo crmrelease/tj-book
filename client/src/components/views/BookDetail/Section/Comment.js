@@ -9,7 +9,8 @@ function Comment(props) {
     const body ={
         writer:localStorage.getItem('idKey'),
         bookId:props.bookId,
-        content:contentValue
+        content:contentValue,
+        bookTitle:props.title
     }
 
     const typing = (e)=>{
