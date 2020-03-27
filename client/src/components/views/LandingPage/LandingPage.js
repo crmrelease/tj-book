@@ -20,6 +20,7 @@ function LandingPage(props) {
                   bookList.push(key)
                 })
                 setbookState(bookList)
+                console.log(bookList)
                 setmainBook(bookList[5])
             }
             else{

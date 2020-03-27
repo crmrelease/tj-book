@@ -21,7 +21,7 @@ useEffect(() => {
         }
     })
 
-    Axios.post('/rate/getfavorite',body)
+    Axios.post('/favorite/getfavorite',body)
     .then(response=>{
         if(response.data.favoritenumber){
             setfavorite(response.data.favoritenumber.length)

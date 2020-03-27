@@ -11,6 +11,7 @@
   "author": "taejin",
   "license": "ISC",
   "dependencies": {
+    "backend": "0.0.0",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "concurrently": "^5.1.0",

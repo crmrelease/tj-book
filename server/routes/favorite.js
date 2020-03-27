@@ -27,6 +27,7 @@ if(index!=null){
 
 
 router.post('/getfavorite',(req,res)=>{
+    console.log(req.body)
     favorite.find({bookId:req.body.bookId})
     .exec((err,favoritenumber)=>{
         if(err) return res.status(400).json({success:false})
@@ -36,7 +37,7 @@ router.post('/getfavorite',(req,res)=>{
 
 router.post('/getfavoriteAll',async (req,res)=>{
     console.log(req.body)
-    await favorite.find({writer:req.body.writer})
+    await favorite.find({writer:req.body.writer}).populate('writer')
     .exec((err,favoriteAll)=>{
         if(err) return res.status(400).json({success:false})
         return res.status(200).json({success:true, favoriteAll})

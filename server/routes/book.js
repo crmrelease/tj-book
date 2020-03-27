@@ -23,38 +23,18 @@ router.post('/bookInfoRandom',(req,res)=>{
     req.body.map((key)=>{
                  enc.push(key)
              })
-    const run = function(){
-        return new Promise(function(resolve,reject){
-            enc.map((key)=>{
-                request(`${process.env.API_URL}key=${process.env.API_KEY}&queryType=productNumber&query=${key}`,async (error,response,body)=>{
-                    resolve(body)
+  
+    let result =[]
+    enc.map((key)=>{
+        request(`${process.env.API_URL}key=${process.env.API_KEY}&queryType=productNumber&query=${key}`,(error,response,body)=>{
+                    result.push(body)
+                    if(result.length==enc.length){
+                        res.status(200).json({success:true,result})
+                    }
                 }) 
             })
-        }
-        )
-}
-
-run().then(function(resolvedData){
-    res.json({success:true,resolvedData})
+    
 })
-
-})
-// router.post('/bookInfoRandom',(req,res)=>{
-//     console.log(req.body)
-//     let enc =[]
-//     index.map((key)=>{
-//         key_convert=encodeURI(key)
-//         enc.push(key_convert)
-//     })
-//     let result_info=[]
-//     enc.map((key)=>
-//     request(`${process.env.API_URL}key=${process.env.API_KEY}&query=${key}`,(error,response,body)=>{
-//         if(error) res.json({success:false,error})
-//         result_info.push(body)
-//     }))
-//     res.json({success:true, result_info})
-// })
-
 
 router.post('/bookInfoDetail',(req,res)=>{
     productNumber = req.body.bookId
