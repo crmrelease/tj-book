@@ -13,6 +13,7 @@ function BookDetailInfo(props) {
             <Descriptions.Item label="작가">{props.author}</Descriptions.Item>
             <Descriptions.Item label="인터파크 평점" span={2}>
             <Badge status="processing" text={props.customerReviewRank} /></Descriptions.Item>
+            <Descriptions.Item label="소개" span={3}>{props.description}</Descriptions.Item>
         </Descriptions>
     )
 }

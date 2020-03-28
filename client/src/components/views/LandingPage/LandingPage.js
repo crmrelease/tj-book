@@ -85,7 +85,6 @@ function LandingPage(props) {
             {mainBook!==null&&<MainImage 
                     image={mainBook.coverLargeUrl}
                     title={mainBook.title}
-                    description={mainBook.description} 
                 />}
             
             <div style={{width:'85%', margin:'1rem auto'}}>

@@ -43,8 +43,7 @@ function BookDetail(props) {
         <div>
             <MainImage 
              image={bookState.coverLargeUrl}
-             title={bookState.title}
-             description={bookState.description} />
+             title={bookState.title} />
         <div style={{width:'85%', margin:'1rem auto'}}>
 
         <div style={{display:'flex', justifyContent:'flex-end'}}>
@@ -58,6 +57,7 @@ function BookDetail(props) {
         saleStatus={bookState.saleStatus}
         categoryName={bookState.categoryName}
         publisher={bookState.publisher}
+        description={bookState.description}
         author={bookState.author}
         customerReviewRank={bookState.customerReviewRank}
         />
