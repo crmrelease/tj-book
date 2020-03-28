@@ -49,7 +49,7 @@ useEffect(() => {
 
         return (
         <div style={{width:'100%', margin: '0'}}>
-                <div style={{width:'85%', margin:'1rem auto'}}>
+                <div style={{width:'85%', margin:'2rem auto'}}>
             <h2>내가 좋아하는 도서</h2>
             <hr />
             <Row gutter={[16,16]}>

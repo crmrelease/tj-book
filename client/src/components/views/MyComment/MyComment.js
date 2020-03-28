@@ -36,7 +36,7 @@ function MyComment() {
  
     return (
       <div style={{width:'100%', margin: '0'}}>
-     <div style={{width:'85%', margin:'1rem auto'}}>
+     <div style={{width:'85%', margin:'2rem auto'}}>
             <h2>내가 남긴 코멘트</h2>
             <hr/>
             </div>

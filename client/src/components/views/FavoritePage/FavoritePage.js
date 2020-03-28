@@ -4,7 +4,7 @@ import { Rate, Card } from 'antd';
 function FavoritePage() {
     return (
         <div style={{width:'100%', margin: '0'}}>
-        <div style={{width:'85%', margin:'1rem auto'}}>
+        <div style={{width:'85%', margin:'2rem auto'}}>
     <h2>내가 평가한 도서</h2>
     <hr />
     <Card title="내가 평가한 도서">

@@ -5,7 +5,7 @@ import { Descriptions, Badge } from 'antd';
 function Profile() {
     return (
         <div style={{width:'100%', margin: '0'}}>
-                <div style={{width:'85%', margin:'1rem auto'}}>
+                <div style={{width:'85%', margin:'2rem auto'}}>
             <h2>{localStorage.getItem('name')}님, 환영합니다</h2>
             <hr />
             <Descriptions title="프로필" layout="vertical" bordered>

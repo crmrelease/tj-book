@@ -72,7 +72,7 @@ function FindBook() {
     return (
         <div>
 <div style={{width:'100%', margin: '0'}}>
-                <div style={{width:'85%', margin:'1rem auto'}}>
+                <div style={{width:'85%', margin:'2rem auto'}}>
             <h2>도서 검색</h2>
             <hr />
            <div>
