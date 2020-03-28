@@ -84,12 +84,10 @@ function FindBook() {
         <Option value="all">전체검색</Option>
         <Input.Search style={{ width: '30%' }} />   
       </Select>
-       <textarea
-                style={{width:'100%',borderRadius:'5px',height:'32px'}}
+      <Input style={{width:'100%',borderRadius:'5px',height:'32px'}}
                 onChange={typing}
                 value={contentValue}
-                placeholder='검색할 항목을 입력하세요'
-                />
+                placeholder='검색할 항목을 입력하세요' />
     <Button icon={<SearchOutlined />} style={{width:'10%', height:'32px'}} onClick={onSubmit}>검색</Button>
             </form>
          </div>
