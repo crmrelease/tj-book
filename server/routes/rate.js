@@ -33,4 +33,13 @@ router.post('/getrate',(req,res)=>{
 })
 
 
+router.post('/getrateAll',async (req,res)=>{
+    console.log(req.body)
+    await rate.find({writer:req.body.writer}).populate('writer')
+    .exec((err,rateAll)=>{
+        if(err) return res.status(400).json({success:false})
+        return res.status(200).json({success:true, rateAll})
+    })
+})
+
 module.exports = router;

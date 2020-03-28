@@ -19,8 +19,9 @@ router.post('/bookInfo',(req,res)=>{
 
 router.post('/bookInfoRandom',(req,res)=>{
     let enc =[]
+    console.log(req.body)
     req.body.map((key)=>{
-                 enc.push(key)
+                 enc.push(key.bookId)
              })
   
     let result =[]
