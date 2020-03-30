@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Rate, Card } from 'antd';
 import GridCard from '../../Common/GridCard';
 import { Tabs } from 'antd';
+import {Row} from 'antd'
 
 function FavoriteDetail(props) {
 
@@ -30,13 +31,20 @@ function FavoriteDetail(props) {
             one_list.push(key)
         }    
     })
-  
+    console.log(five_list)
+    console.log(four_list)
+    console.log(three_list)
+    console.log(two_list)
+    console.log(one_list)
+
+    
     return (
 <div>
-                        <Tabs type="card">
+<Row gutter={[16,16]}>
 
+    <Tabs type="card">
     <TabPane tab="5점짜리 도서" key="1">
-    <Card type="inner" title="5점짜리 도서" >
+    <Card type="card" title="5점짜리 도서" >
     {five_list&&five_list.map((key)=>(<GridCard 
     bookId={key.bookId} image={key.coverLargeUrl} title={key.name}
     />))}
@@ -74,8 +82,11 @@ function FavoriteDetail(props) {
     />))}
     </Card>
     </TabPane>
-    
+
     </Tabs>
+
+    </Row>
+
   </div>
 
 
