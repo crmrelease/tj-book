@@ -36,7 +36,7 @@ function RightMenu(props) {
           <a href="/MyComment">내가 남긴 코멘트</a>
         </Menu.Item>
         <Menu.Item key="logout">
-          <a onClick={logoutHandler}>로그아웃(수정중)</a>
+          <a onClick={logoutHandler}>로그아웃</a>
         </Menu.Item>
         <Menu.Item key="intro">
         <a href="/profile" style={{width:'20%'}}>{localStorage.getItem("name")}님 환영합니다</a>

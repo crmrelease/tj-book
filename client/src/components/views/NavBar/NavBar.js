@@ -27,7 +27,6 @@ function NavBar() {
           <a href="/" ><img src={logo} style={{width:'140%'}}/></a>
         </div>
         <div className="menu__container">
-        <BrowserRouter>
           <div className="menu_left">
             <LeftMenu mode="horizontal" />
           </div>
@@ -52,7 +51,6 @@ function NavBar() {
             <LeftMenu mode="inline" />
             <RightMenu mode="inline" />
           </Drawer>
-          </BrowserRouter>
         </div>
       </nav>
     )

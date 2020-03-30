@@ -67,18 +67,6 @@ function LandingPage(props) {
       moreItemFun(body)
     }
 
-    const onClickHandler =()=>{
-        axios.get('auth/logout').then(response=>{
-                console.log(response.data)
-                if(response.data.logoutSucess){
-                    localStorage.clear()
-                    props.history.push("/login")
-                }else{
-                    alert('로그아웃이 실패')
-                }
-        })
-    }
-
     return (
         <div style={{width:'100%', margin: '0'}}>
 
@@ -109,7 +97,6 @@ function LandingPage(props) {
 
                 <button onClick={moreItem}> 더 보기</button>
             </div>
-            <button onClick={onClickHandler}>임시 로그아웃</button>
         </div>
     )
 }

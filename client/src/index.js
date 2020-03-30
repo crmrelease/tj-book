@@ -9,6 +9,7 @@ import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
 import { applyMiddleware, createStore } from 'redux';
 import Reducer from './_reducers';
+import { BrowserRouter } from 'react-router-dom';
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,ReduxThunk)(createStore)
 
@@ -19,7 +20,9 @@ store ={createStoreWithMiddleware(Reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__()
 )}
 >
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
 </Provider>
 
     

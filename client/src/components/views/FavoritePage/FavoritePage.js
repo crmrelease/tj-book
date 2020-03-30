@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import FavoriteDetail from './Section/FavoriteDetail'
 import axios from 'axios'
+import { Rate } from 'antd';
+
 
 function FavoritePage() {
 
@@ -8,7 +10,8 @@ function FavoritePage() {
     const body={writer:localStorage.getItem('idKey')}
     let info =[]
     let cover =[]
-    let zip = (a1, a2) => a1.map((x, i) => [ x, a2[i] ]); 
+    let favoriteList=[]
+    //let zip = (a1, a2) => a1.map((x, i) => [ x.concat(a2[i])]); 
   
     useEffect(() => {
     
@@ -24,14 +27,17 @@ function FavoritePage() {
             response.data.result.map(key=>{
                 const obj = JSON.parse(key)
                 const item = obj.item
-                item.map(key=>{
-                    cover.push({coverSmallUrl:key.coverSmallUrl, name:key.title})
+                item.map((key,index)=>{
+                  cover.push({coverLargeUrl:key.coverLargeUrl, name:key.title})
                   }) 
                 }
             )
-            let combinedResult = zip(info, cover);
-            //setfavoriteAll(combinedResult)
-
+    
+        for(let i =0;i<info.length;i++){    
+         let target={bookId:info[i].bookId,grade:info[i].grade,coverLargeUrl:cover[i].coverLargeUrl,name:cover[i].name}
+         favoriteList.push(target)
+        }
+         setfavoriteAll(favoriteList)
         }else{
             alert('별점매긴 책 정보 소환 실패')
         }
@@ -47,13 +53,10 @@ function FavoritePage() {
     return (
         <div style={{width:'100%', margin: '0'}}>
         <div style={{width:'85%', margin:'2rem auto'}}>
-    <h2>내가 평가한 도서</h2>
+    <h2>내가 평가한 도서<Rate disabled="true" value="5" style={{float:"right"}}/></h2>
     <hr />
         <FavoriteDetail
-        name={favoriteAll.name}
-        coverSmallUrl={favoriteAll.coverSmallUrl}
-        grade={favoriteAll.grade}
-        bookId={favoriteAll.bookId}
+        favoriteAll={favoriteAll}
         />
     </div>
 

@@ -24,11 +24,8 @@ import Auth from './hoc/auth';
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}> 
-        <BrowserRouter>
       <NavBar />
-      </BrowserRouter>
 <div style={{ paddingTop: '75px', minHeight: 'calc(100vh - 80px)' }}>
-  <BrowserRouter>
   <Switch>
           <Route exact path="/" component={Auth(LandingPage,null)}/>
           <Route exact path="/login" component={Auth(LoginPage,false)}/>
@@ -44,7 +41,6 @@ function App() {
 
           
   </Switch>
-  </BrowserRouter>
 </div>
 </Suspense>
   );

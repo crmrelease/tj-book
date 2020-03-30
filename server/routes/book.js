@@ -20,7 +20,8 @@ router.post('/bookInfo',(req,res)=>{
 router.post('/bookInfoRandom',(req,res)=>{
     let enc =[]
     req.body.map((key)=>{
-                 enc.push(key)
+        if(key.grade){enc.push(key.bookId)}
+        else{enc.push(key)}
              })
     console.log(enc)
     let result =[]

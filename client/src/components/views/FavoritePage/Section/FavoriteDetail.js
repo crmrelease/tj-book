@@ -1,44 +1,83 @@
 import React, { useEffect, useState } from 'react'
 import { Rate, Card } from 'antd';
 import GridCard from '../../Common/GridCard';
+import { Tabs } from 'antd';
 
 function FavoriteDetail(props) {
-    const[bookRate1,setbookRate1]= useState([])
-    const[bookRate2,setbookRate2]= useState([])
-    const[bookRate3,setbookRate3]= useState([])
-    const[bookRate4,setbookRate4]= useState([])
-    const[bookRate5,setbookRate5]= useState([])
-    
+
+    const { TabPane } = Tabs;
+
+    let five_list= []
+    let four_list= []
+    let three_list= []
+    let two_list= []
+    let one_list= []
+
+    props.favoriteAll.map(key=>{
+        if(key.grade==5){
+            five_list.push(key)
+        }
+        if(key.grade==4){
+            four_list.push(key)
+        }
+        if(key.grade==3){
+            three_list.push(key)
+        }
+        if(key.grade==2){
+            two_list.push(key)
+        }
+        if(key.grade==1){
+            one_list.push(key)
+        }    
+    })
+  
     return (
-        <div>
-<Card title="내가 평가한 도서">
-<p className="site-card-demo-inner-p">내가 평가한 도서</p>
-<Card type="inner" title="5점짜리 도서" extra={<a href="#">더보기</a>}>
-<GridCard 
+<div>
+                        <Tabs type="card">
 
-/>
-</Card>
-<Card type="inner" title="4점짜리 도서" extra={<a href="#">더보기</a>}>
-<GridCard
+    <TabPane tab="5점짜리 도서" key="1">
+    <Card type="inner" title="5점짜리 도서" >
+    {five_list&&five_list.map((key)=>(<GridCard 
+    bookId={key.bookId} image={key.coverLargeUrl} title={key.name}
+    />))}
+    </Card>    
+    </TabPane>
 
-/>
-</Card>
-<Card type="inner" title="3점짜리 도서" extra={<a href="#">더보기</a>}>
-<GridCard
+    <TabPane tab="4점짜리 도서" key="2">
+    <Card type="inner" title="4점짜리 도서">
+    {four_list&&four_list.map((key)=>(<GridCard 
+    bookId={key.bookId} image={key.coverLargeUrl} title={key.name}
+    />))}
+    </Card>
+    </TabPane>
 
-/>
-</Card>
-<Card type="inner" title="2점짜리 도서" extra={<a href="#">더보기</a>}>
-<GridCard
+    <TabPane tab="3점짜리 도서" key="3">
+    <Card type="inner" title="3점짜리 도서" >
+    {three_list&&three_list.map((key)=>(<GridCard 
+    bookId={key.bookId} image={key.coverLargeUrl} title={key.name}
+    />))}
+    </Card>
+    </TabPane>
 
-/>
-</Card>
-<Card type="inner" title="1점짜리 도서" extra={<a href="#">더보기</a>}>
-<GridCard
-/>
-</Card>
-</Card>
-    </div>
+    <TabPane tab="2점짜리 도서" key="4">
+    <Card type="inner" title="2점짜리 도서">
+    {two_list&&two_list.map((key)=>(<GridCard 
+    bookId={key.bookId} image={key.coverLargeUrl} title={key.name}
+    />))}
+    </Card>
+    </TabPane>
+
+    <TabPane tab="1점짜리 도서" key="5">
+    <Card type="inner" title="1점짜리 도서">
+    {one_list&&one_list.map((key)=>(<GridCard 
+    bookId={key.bookId} image={key.coverLargeUrl} title={key.name}
+    />))}
+    </Card>
+    </TabPane>
+    
+    </Tabs>
+  </div>
+
 
     )
 }
