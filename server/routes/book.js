@@ -19,15 +19,15 @@ router.post('/bookInfo',(req,res)=>{
 
 router.post('/bookInfoRandom',(req,res)=>{
     let enc =[]
-    console.log(req.body)
     req.body.map((key)=>{
-                 enc.push(key.bookId)
+                 enc.push(key)
              })
-  
+    console.log(enc)
     let result =[]
     enc.map((key)=>{
         request(`${process.env.API_URL}key=${process.env.API_KEY}&queryType=productNumber&query=${key}`,(error,response,body)=>{
                     result.push(body)
+                    console.log(body)
                     if(result.length==enc.length){
                         res.status(200).json({success:true,result})
                     }

@@ -27,7 +27,7 @@ router.post('/', async (req, res,next) => {
       });
         return res.cookie("clientToken",token).status(200) 
        .json({
-         message: '토큰이 발급되었습니다', token
+         success: true, message: '토큰이 발급되었습니다', token
        })
     }
      catch (error) {

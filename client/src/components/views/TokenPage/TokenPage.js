@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-function LoginPage(props) {
+function TokenPage(props) {
     return (<div style={{
         display: 'flex', justifyContent: 'center', alignItems: 'center'
         , width: '100%', height: '100vh'
@@ -15,4 +15,4 @@ function LoginPage(props) {
     )
 }
 
-export default LoginPage
+export default TokenPage

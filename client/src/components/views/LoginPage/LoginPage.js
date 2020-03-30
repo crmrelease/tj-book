@@ -31,7 +31,10 @@ function LoginPage(props) {
        })
 
         dispatch(tokenUser(body)).then(response=>{
-        console.log(response)
+            if(response.payload.success){
+                props.history.push('/')
+
+            }
        })
     }
 

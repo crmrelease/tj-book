@@ -24,6 +24,7 @@ useEffect(() => {
         axios.post('/book/bookInfoRandom',info)
         .then(response=>{
         if(response.data.success){
+            console.log(response.data)
             let bookList =[]
             response.data.result.map(key=>{
                 const obj = JSON.parse(key)
@@ -34,6 +35,7 @@ useEffect(() => {
                 }
             )
             setbookInfo(bookList)
+            console.log(bookList)
             setmainBook(bookList[0])
         }else{
             alert('좋아하는 책 정보 소환 실패')
