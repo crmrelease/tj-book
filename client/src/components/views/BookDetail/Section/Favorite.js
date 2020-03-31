@@ -9,7 +9,7 @@ function Favorite(props) {
 
 const [favorite,setfavorite]=useState(0)
 const [rate,setrate]=useState("")
-const ratelist = ['ㅆㅎㅌㅊ','ㅎㅌㅊ','ㅍㅌㅊ','ㅅㅌㅊ','ㅆㅅㅌㅊ']
+const ratelist = ['개노잼이에요ㅜ','별로에요','ㅍㅌㅊ에요','재밌어요','너무좋아요']
 
 useEffect(() => {
     const body={

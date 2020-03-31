@@ -19,13 +19,13 @@ function MyComment() {
   }, [])
  
     const columns = [
-        {
+      {
+        title: '코멘트',
+        dataIndex:'content'
+      },  
+      {
           title: '제목',
           dataIndex:'bookTitle'
-        },
-        {
-          title: '코멘트',
-          dataIndex:'content'
         },
         {
           title: '바로가기',

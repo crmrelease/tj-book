@@ -21,22 +21,24 @@ function FavoritePage() {
             response.data.rateAll.map((key)=>{
                 info.push({bookId:key.bookId, grade:key.grade})
             })
+            console.log(info)
         axios.post('/book/bookInfoRandom',info)
         .then(response=>{
         if(response.data.success){
             response.data.result.map(key=>{
                 const obj = JSON.parse(key)
                 const item = obj.item
-                item.map((key,index)=>{
-                  cover.push({coverLargeUrl:key.coverLargeUrl, name:key.title})
+                item.map((key)=>{
+                  cover.push({name:key.title, author:key.author})
                   }) 
                 }
             )
-    
+                console.log(cover)
         for(let i =0;i<info.length;i++){    
-         let target={bookId:info[i].bookId,grade:info[i].grade,coverLargeUrl:cover[i].coverLargeUrl,name:cover[i].name}
+         let target={bookId:info[i].bookId,grade:info[i].grade,name:cover[i].name, author:cover[i].author}
          favoriteList.push(target)
         }
+        console.log(favoriteList)
          setfavoriteAll(favoriteList)
         }else{
             alert('별점매긴 책 정보 소환 실패')

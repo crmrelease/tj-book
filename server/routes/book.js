@@ -19,21 +19,45 @@ router.post('/bookInfo',(req,res)=>{
 
 router.post('/bookInfoRandom',(req,res)=>{
     let enc =[]
+    console.log(req.body)
     req.body.map((key)=>{
         if(key.grade){enc.push(key.bookId)}
         else{enc.push(key)}
              })
-    console.log(enc)
     let result =[]
-    enc.map((key)=>{
-        request(`${process.env.API_URL}key=${process.env.API_KEY}&queryType=productNumber&query=${key}`,(error,response,body)=>{
-                    result.push(body)
-                    console.log(body)
-                    if(result.length==enc.length){
+
+             function promise_function(url) {
+                 return new Promise(function(resolve,reject){
+                     request(url,function(error,res,body){
+                         if(!error && res.statusCode==200){
+                             resolve(body)
+                         } else{
+                             reject(error)
+                         }
+                     })
+                 })
+             }
+
+             async function main(){
+                 
+                for(i=0; i<enc.length; i++){
+                    let input = await promise_function(`${process.env.API_URL}key=${process.env.API_KEY}&queryType=productNumber&query=${enc[i]}`)
+                    result.push(input)
+
+                }
                         res.status(200).json({success:true,result})
-                    }
-                }) 
-            })
+
+             }
+             main()
+
+    //  enc.map( (key)=>{
+    //       request(`${process.env.API_URL}key=${process.env.API_KEY}&queryType=productNumber&query=${key}`,(error,response,body)=>{
+    //                  result.push(body)
+    //                 if(result.length==enc.length){
+    //                    res.status(200).json({success:true,result})
+    //                 }
+    //              }) 
+    //          })
     
 })
 
