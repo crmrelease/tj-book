@@ -35,7 +35,13 @@ function FindBook() {
           render: (itemId) => <a href={`/book/${itemId}`}>도서정보로 이동</a>,
         },
       ];
- 
+      
+      const enter =(e)=> {
+        if(e.keyCode===13)
+          onSubmit(e);
+}
+
+
 
     const body ={
         writer:localStorage.getItem('idKey'),
@@ -87,8 +93,9 @@ function FindBook() {
       <Input style={{width:'100%',borderRadius:'5px',height:'32px'}}
                 onChange={typing}
                 value={contentValue}
-                placeholder='검색할 항목을 입력하세요' />
-    <Button icon={<SearchOutlined />} style={{width:'10%', height:'32px'}} onClick={onSubmit}>검색</Button>
+                placeholder='검색할 항목을 입력하세요'
+                onKeyDown={enter} />
+    <Button icon={<SearchOutlined />} style={{width:'10%', height:'32px'}} onClick={onSubmit} >검색</Button>
             </form>
          </div>
     
