@@ -55,7 +55,7 @@ function FavoritePage() {
     return (
         <div style={{width:'100%', margin: '0'}}>
         <div style={{width:'85%', margin:'2rem auto'}}>
-    <h2>내가 평가한 도서<Rate disabled="true" value="5" style={{float:"right"}}/></h2>
+    <h2>내가 평가한 도서</h2>
     <hr />
         <FavoriteDetail
         favoriteAll={favoriteAll}
