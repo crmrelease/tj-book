@@ -7,6 +7,7 @@ const bodyParser= require('body-parser')
 const connect = require('./models')
 const passport = require('passport');
 const cors =require('cors')
+const path = require('path')
 
 const indexRouter = require('./routes/index')
 const authRouter = require('./routes/auth');
@@ -17,7 +18,7 @@ const favoriteRouter = require('./routes/favorite');
 const rateRouter = require('./routes/rate');
 
 
-
+  
 const passportConfig = require('./passport');
 
 
@@ -40,6 +41,7 @@ const sessionMiddleware = session({
 app.set('port',process.env.PORT||3299);
 passportConfig(passport);
 
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.use(cors())
 app.use(morgan('dev'));
@@ -62,7 +64,9 @@ app.use('/comment',commentRouter);
 app.use('/favorite',favoriteRouter);
 app.use('/rate',rateRouter);
 
-
+app.get('*', function (req, res){
+    res.sendFile(path.join(__dirname, "./client/build", "index.html"));
+  })
 
 
 
